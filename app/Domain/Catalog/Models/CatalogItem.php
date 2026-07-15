@@ -34,4 +34,14 @@ class CatalogItem extends Model
     {
         return $this->hasMany(CatalogAlias::class);
     }
+
+    public function successor(): BelongsTo
+    {
+        return $this->belongsTo(self::class, 'merged_into_catalog_item_id');
+    }
+
+    public function mergedPredecessors(): HasMany
+    {
+        return $this->hasMany(self::class, 'merged_into_catalog_item_id');
+    }
 }

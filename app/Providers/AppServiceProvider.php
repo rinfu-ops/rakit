@@ -10,6 +10,7 @@ use App\Domain\Shared\Normalization\NormalizesUnit;
 use App\Domain\System\Models\SystemOperationalMode;
 use App\Policies\CatalogItemPolicy;
 use App\Policies\SystemOperationalModePolicy;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
@@ -29,6 +30,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Paginator::useBootstrapFive();
         Gate::policy(CatalogItem::class, CatalogItemPolicy::class);
         Gate::policy(SystemOperationalMode::class, SystemOperationalModePolicy::class);
     }

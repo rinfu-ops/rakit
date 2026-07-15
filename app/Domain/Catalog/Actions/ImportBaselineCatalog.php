@@ -49,7 +49,7 @@ class ImportBaselineCatalog
                 $mapping = BaselineCatalogItemSource::query()->where('source_id', $sourceId)->where('source_item_id', $row['source_item_id'])->first();
 
                 if ($mapping === null) {
-                    $item = $this->createCatalogItem->handle($actor, $sourceId, $row, $category->id, $group->id);
+                    $item = $this->createCatalogItem->handleBaseline($actor, $sourceId, $row, $category->id, $group->id);
                     $createdItems++;
                 } else {
                     if (! hash_equals($mapping->content_hash, $row['content_hash'])) {

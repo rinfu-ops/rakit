@@ -43,10 +43,16 @@
                     <div class="menu-inner-shadow"></div>
 
                     <ul class="menu-inner py-1">
-                        <li class="menu-item active">
+                        <li class="menu-item {{ request()->routeIs('dashboard') ? 'active' : '' }}">
                             <a href="{{ route('dashboard') }}" class="menu-link">
                                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                                 <div>Dashboard</div>
+                            </a>
+                        </li>
+                        <li class="menu-item {{ request()->routeIs('catalog.*') ? 'active' : '' }}">
+                            <a href="{{ route('catalog.index') }}" class="menu-link">
+                                <i class="menu-icon tf-icons bx bx-library"></i>
+                                <div>Catalog</div>
                             </a>
                         </li>
                     </ul>
@@ -79,6 +85,17 @@
 
                     <div class="content-wrapper">
                         <div class="container-xxl flex-grow-1 container-p-y">
+                            @if (session('status'))
+                                <div class="alert alert-success alert-dismissible" role="alert">
+                                    {{ session('status') }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            @endif
+
+                            @if ($errors->has('catalog'))
+                                <div class="alert alert-danger" role="alert">{{ $errors->first('catalog') }}</div>
+                            @endif
+
                             @yield('content')
                         </div>
 
