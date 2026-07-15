@@ -124,8 +124,8 @@ RAKIT is under active development.
 | Foundation and authentication       | Complete |
 | Architecture and integrity skeleton | Complete |
 | Baseline Catalog import             | Complete |
-| Catalog management                  | Next     |
-| Pricing foundation                  | Planned  |
+| Catalog management                  | Complete |
+| Pricing foundation                  | Next     |
 | RAP import and review               | Planned  |
 | RAP Builder                         | Planned  |
 | Excel generation and export         | Planned  |
